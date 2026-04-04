@@ -17,7 +17,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);ove
 .neu-hover{transition:all 0.4s cubic-bezier(0.16,1,0.3,1)}
 .neu-hover:hover{box-shadow:12px 12px 24px var(--sd),-12px -12px 24px var(--sl);transform:translateY(-4px)}
 .container{max-width:1100px;margin:0 auto;padding:0 32px}
-.rv{opacity:0;transform:translateY(32px);transition:all 0.9s cubic-bezier(0.16,1,0.3,1)}.rv.vis{opacity:1;transform:translateY(0)}
+.rv{opacity:0;transform:translateY(20px);transition:all 0.55s cubic-bezier(0.16,1,0.3,1)}.rv.vis{opacity:1;transform:translateY(0)}
 
 nav{position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:100;padding:12px 32px;display:flex;align-items:center;gap:40px;background:var(--bg);border-radius:20px;box-shadow:5px 5px 10px var(--sd),-5px -5px 10px var(--sl)}
 .nav-logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:17px;color:var(--text);text-decoration:none}
@@ -103,13 +103,13 @@ section{padding:100px 0}
 .adv-t{font-size:14px;font-weight:600;margin-bottom:6px}.adv-d{font-size:12px;color:var(--text2);line-height:1.6}
 
 /* CTA */
-.cta-sec{padding:120px 0;text-align:center}
+.cta-sec{padding:60px 0 40px;text-align:center}
 .cta-card{padding:56px 40px;max-width:680px;margin:0 auto}
 .cta-t{font-size:clamp(26px,3.2vw,38px);font-weight:700;letter-spacing:-0.5px;margin-bottom:12px}.cta-t span{color:var(--red)}
 .cta-s{font-size:15px;color:var(--text2);margin-bottom:32px}
 .cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:24px}
 .cta-urg{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:12px;font-size:12px;font-weight:600;color:var(--amber);box-shadow:inset 3px 3px 6px var(--sd),inset -3px -3px 6px var(--sl)}
-footer{text-align:center;padding:40px;font-size:11px;color:var(--text3)}
+footer{text-align:center;padding:24px;font-size:11px;color:var(--text3);margin-bottom:0}
 .pricing-grid{display:grid}
 @media(max-width:768px){.pricing-grid{grid-template-columns:1fr!important}
   nav{top:10px;padding:10px 16px;gap:12px}.nav-links{display:none}
@@ -172,48 +172,16 @@ footer{text-align:center;padding:40px;font-size:11px;color:var(--text3)}
 
 
 /* ── ФОРМА ЗАЯВКИ ── */
-.form-section{padding:80px 40px;max-width:680px;margin:0 auto;}
+.form-section{padding:30px 40px 10px;max-width:680px;margin:0 auto;}
 .form-wrap{background:var(--bg);border-radius:28px;padding:48px 40px;box-shadow:10px 10px 28px var(--sd),-10px -10px 28px var(--sl);}
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
 .form-field{display:flex;flex-direction:column;gap:8px;}
 .form-field.full{grid-column:1/-1;}
 .form-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-family:'Space Mono',monospace;}
-.form-input{padding:13px 16px;border-radius:12px;border:none;outline:none;font-size:13px;font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);box-shadow:inset 4px 4px 9px var(--sd),inset -4px -4px 9px var(--sl);}
+.form-input,.form-select{padding:13px 16px;border-radius:12px;border:none;outline:none;font-size:13px;background:var(--bg);color:var(--ink);box-shadow:inset 4px 4px 9px var(--sd),inset -4px -4px 9px var(--sl);width:100%;box-sizing:border-box;font-family:inherit;}
 .form-input::placeholder{color:var(--muted);}
 .form-input:focus{box-shadow:inset 4px 4px 9px var(--sd),inset -4px -4px 9px var(--sl),0 0 0 2px rgba(0,188,212,.2);}
-.form-select{padding:13px 16px;border-radius:12px;border:none;outline:none;font-size:13px;font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);box-shadow:inset 4px 4px 9px var(--sd),inset -4px -4px 9px var(--sl);cursor:pointer;}
-.form-btn{width:100%;padding:15px;border-radius:14px;border:none;font-size:14px;font-weight:700;font-family:'Inter',sans-serif;letter-spacing:.03em;cursor:pointer;background:linear-gradient(135deg,var(--accent),#007A8A);color:#fff;box-shadow:6px 6px 14px rgba(0,100,120,.3),-4px -4px 10px var(--sl);transition:transform .15s;margin-top:8px;}
-.form-btn:hover{transform:translateY(-2px);}
-.form-btn:disabled{opacity:.6;cursor:not-allowed;transform:none;}
-.form-success{display:none;text-align:center;padding:24px;border-radius:16px;background:rgba(0,188,212,.08);border:1px solid rgba(0,188,212,.2);}
-.form-success-icon{font-size:40px;margin-bottom:12px;}
-.form-success-title{font-size:18px;font-weight:700;color:var(--accent);margin-bottom:6px;}
-.form-success-sub{font-size:13px;color:var(--muted);line-height:1.6;}
-
-.form-section{padding:80px 40px;max-width:680px;margin:0 auto;}
-.form-wrap{background:var(--bg);border-radius:28px;padding:48px 40px;box-shadow:10px 10px 28px var(--sd),-10px -10px 28px var(--sl);}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
-.form-field{display:flex;flex-direction:column;gap:8px;}
-.form-field.full{grid-column:1/-1;}
-.form-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-family:'Space Mono',monospace;}
-.form-input,.form-select{padding:13px 16px;border-radius:12px;border:none;outline:none;font-size:13px;font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);box-shadow:inset 4px 4px 9px var(--sd),inset -4px -4px 9px var(--sl);width:100%;}
-.form-input::placeholder{color:var(--muted);}
-.form-btn{width:100%;padding:15px;border-radius:14px;border:none;font-size:14px;font-weight:700;font-family:'Inter',sans-serif;cursor:pointer;background:linear-gradient(135deg,var(--accent),#007A8A);color:#fff;box-shadow:6px 6px 14px rgba(0,100,120,.3),-4px -4px 10px var(--sl);transition:transform .15s;margin-top:8px;}
-.form-btn:hover{transform:translateY(-2px);}
-.form-btn:disabled{opacity:.6;cursor:not-allowed;transform:none;}
-.form-success{display:none;text-align:center;padding:32px;border-radius:16px;background:rgba(0,188,212,.08);border:1px solid rgba(0,188,212,.2);}
-.form-success-icon{font-size:48px;margin-bottom:12px;}
-.form-success-title{font-size:20px;font-weight:700;color:var(--accent);margin-bottom:8px;}
-.form-success-sub{font-size:13px;color:var(--muted);line-height:1.6;}
-
-.form-section{padding:80px 40px;max-width:680px;margin:0 auto;}
-.form-wrap{background:var(--bg);border-radius:28px;padding:48px 40px;box-shadow:10px 10px 28px var(--sd),-10px -10px 28px var(--sl);}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
-.form-field{display:flex;flex-direction:column;gap:8px;}
-.form-field.full{grid-column:1/-1;}
-.form-label{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-family:'Space Mono',monospace;}
-.form-input,.form-select{padding:13px 16px;border-radius:12px;border:none;outline:none;font-size:13px;background:var(--bg);color:var(--ink);box-shadow:inset 4px 4px 9px var(--sd),inset -4px -4px 9px var(--sl);width:100%;box-sizing:border-box;}
-.form-btn{width:100%;padding:15px;border-radius:14px;border:none;font-size:14px;font-weight:700;cursor:pointer;background:linear-gradient(135deg,var(--accent),#007A8A);color:#fff;box-shadow:6px 6px 14px rgba(0,100,120,.3),-4px -4px 10px var(--sl);transition:transform .15s;margin-top:8px;}
+.form-btn{width:100%;padding:15px;border-radius:14px;border:none;font-size:14px;font-weight:700;font-family:inherit;cursor:pointer;background:linear-gradient(135deg,var(--accent),#007A8A);color:#fff;box-shadow:6px 6px 14px rgba(0,100,120,.3),-4px -4px 10px var(--sl);transition:transform .15s;margin-top:8px;}
 .form-btn:hover{transform:translateY(-2px);}
 .form-btn:disabled{opacity:.6;cursor:not-allowed;transform:none;}
 .form-success{display:none;text-align:center;padding:32px;border-radius:16px;background:rgba(0,188,212,.08);border:1px solid rgba(0,188,212,.2);}
@@ -254,13 +222,96 @@ footer{text-align:center;padding:40px;font-size:11px;color:var(--text3)}
 }
 .m-toast.error{background:rgba(220,50,50,.08);border:1px solid rgba(220,50,50,.2);color:#c0392b;}
 .m-toast.warn{background:rgba(255,160,0,.08);border:1px solid rgba(255,160,0,.25);color:#e65100;}
+
+/* ═══ STEPPER SCREENS ═══ */
+.stepper-sec{padding:100px 0;overflow:hidden}
+.stepper-wrap{display:flex;flex-direction:column;align-items:center}
+.stepper-nav{display:flex;position:relative;margin-bottom:40px;width:100%;max-width:860px}
+.stepper-track{position:absolute;top:27px;left:50px;right:50px;height:3px;border-radius:2px;background:var(--bg);box-shadow:inset 2px 2px 4px var(--sd),inset -2px -2px 4px var(--sl)}
+.stepper-track-fill{position:absolute;top:27px;left:50px;height:3px;border-radius:2px;background:var(--accent);width:0;transition:width .5s cubic-bezier(.16,1,.3,1)}
+.stepper-dot{flex:1;display:flex;flex-direction:column;align-items:center;gap:10px;cursor:pointer;z-index:2}
+.stepper-ic{width:54px;height:54px;border-radius:16px;display:flex;align-items:center;justify-content:center;background:var(--bg);box-shadow:4px 4px 8px var(--sd),-4px -4px 8px var(--sl);transition:all .35s cubic-bezier(.16,1,.3,1)}
+.stepper-ic svg{width:22px;height:22px;fill:var(--text3);transition:fill .3s}
+.stepper-dot.on .stepper-ic{box-shadow:inset 3px 3px 6px var(--sd),inset -3px -3px 6px var(--sl)}
+.stepper-dot.on .stepper-ic svg,.stepper-dot.done .stepper-ic svg{fill:var(--accent)}
+.stepper-dot.on .stepper-lbl{color:var(--accent);font-weight:600}
+.stepper-lbl{font-size:11px;font-weight:500;color:var(--text3);transition:all .3s;text-align:center}
+.stepper-pane{display:none}
+.stepper-pane.on{display:block;animation:spIn .45s cubic-bezier(.16,1,.3,1)}
+@keyframes spIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.sp-frame{border-radius:20px;background:var(--bg);box-shadow:10px 10px 24px var(--sd),-10px -10px 24px var(--sl);overflow:hidden}
+.sp-bar{display:flex;align-items:center;gap:8px;padding:12px 18px;border-bottom:1px solid rgba(0,0,0,.04)}
+.sp-bar-t{font-size:10px;font-weight:700;color:var(--text3);letter-spacing:1.5px;text-transform:uppercase;margin-left:8px}
+.sp-body{padding:22px}
+.sp-g2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.sp-g3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.sp-g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.sp-stat{padding:14px;border-radius:12px;text-align:center;box-shadow:inset 3px 3px 6px var(--sd),inset -3px -3px 6px var(--sl)}
+.sp-stat b{display:block;font-family:'Space Mono',monospace;font-size:20px;font-weight:700;color:var(--accent)}
+.sp-stat small{font-size:10px;color:var(--text3);margin-top:2px;display:block}
+.sp-title{font-size:12px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.sp-title::before{content:'';width:3px;height:14px;border-radius:2px;background:var(--accent);flex-shrink:0}
+.sp-tbl{width:100%;border-collapse:collapse;font-size:12px}
+.sp-tbl th{text-align:left;font-size:9px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:1px;padding:8px 10px;border-bottom:1px solid rgba(0,0,0,.04)}
+.sp-tbl td{padding:8px 10px;color:var(--text2);border-bottom:1px solid rgba(0,0,0,.02)}
+.sp-tbl tr:last-child td{border:none}
+.sp-tag{display:inline-block;padding:2px 8px;border-radius:6px;font-size:10px;font-weight:600}
+.sp-tag.g{color:var(--green);background:rgba(39,174,96,.08)}
+.sp-tag.a{color:var(--amber);background:rgba(211,84,0,.08)}
+.sp-tag.r{color:var(--red);background:rgba(192,57,43,.08)}
+.sp-tag.t{color:var(--accent);background:rgba(0,151,167,.08)}
+.sp-row{display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:10px;margin-bottom:6px;box-shadow:3px 3px 6px var(--sd),-3px -3px 6px var(--sl);font-size:12px;color:var(--text2)}
+.sp-row-n{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:var(--accent);min-width:20px}
+.sp-row-bar{flex:1;height:5px;border-radius:3px;box-shadow:inset 1px 1px 3px var(--sd),inset -1px -1px 3px var(--sl);overflow:hidden}
+.sp-row-fill{height:100%;border-radius:3px;background:var(--accent)}
+.sp-bars{height:110px;border-radius:12px;box-shadow:inset 3px 3px 6px var(--sd),inset -3px -3px 6px var(--sl);display:flex;align-items:flex-end;padding:0 8px 8px;gap:6px}
+.sp-bar-col{flex:1;border-radius:5px 5px 0 0;transition:height .6s cubic-bezier(.16,1,.3,1);min-width:0}
+/* KPI cards */
+.sp-kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px}
+.sp-kpi{padding:12px;border-radius:12px;box-shadow:4px 4px 8px var(--sd),-4px -4px 8px var(--sl)}
+.sp-kpi-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.sp-kpi-lbl{font-size:9px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.5px}
+.sp-kpi-trend{font-size:9px;font-weight:700;padding:1px 5px;border-radius:4px}
+.sp-kpi-trend.up{color:var(--green);background:rgba(39,174,96,.08)}
+.sp-kpi-trend.dn{color:var(--red);background:rgba(192,57,43,.08)}
+.sp-kpi-val{font-family:'Space Mono',monospace;font-size:18px;font-weight:700;color:var(--text)}
+.sp-kpi-prog{height:3px;border-radius:2px;box-shadow:inset 1px 1px 2px var(--sd),inset -1px -1px 2px var(--sl);overflow:hidden;margin-top:6px}
+.sp-kpi-fill{height:100%;border-radius:2px}
+.sp-kpi-tgt{font-size:8px;color:var(--text3);margin-top:3px;display:flex;justify-content:space-between}
+/* Analytics */
+.sp-ana-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+.sp-ana{padding:14px;border-radius:12px;box-shadow:inset 3px 3px 6px var(--sd),inset -3px -3px 6px var(--sl)}
+.sp-ana-title{font-size:11px;font-weight:700;color:var(--text2);margin-bottom:8px}
+.sp-donut{width:72px;height:72px;border-radius:50%;background:conic-gradient(var(--accent) 0deg 237deg,rgba(0,151,167,.1) 237deg);display:flex;align-items:center;justify-content:center;margin:0 auto 8px}
+.sp-donut i{width:50px;height:50px;border-radius:50%;background:var(--bg);box-shadow:inset 2px 2px 4px var(--sd),inset -2px -2px 4px var(--sl);display:flex;align-items:center;justify-content:center;font-style:normal;font-family:'Space Mono',monospace;font-size:13px;font-weight:700;color:var(--accent)}
+.sp-mini{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--text2);padding:3px 0}
+.sp-mini-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0}
+.sp-mini-v{margin-left:auto;font-family:'Space Mono',monospace;font-weight:700;font-size:11px}
+/* Demo CTA */
+.sp-cta{display:flex;align-items:center;justify-content:space-between;margin-top:20px;padding:18px 22px;border-radius:16px;background:var(--bg);box-shadow:5px 5px 10px var(--sd),-5px -5px 10px var(--sl)}
+.sp-cta h3{font-size:15px;font-weight:700;margin-bottom:2px}
+.sp-cta p{font-size:12px;color:var(--text2);max-width:480px}
+.sp-demo{padding:13px 28px;border-radius:14px;font-size:13px;font-weight:700;font-family:inherit;border:none;cursor:pointer;background:var(--accent);color:#fff;box-shadow:4px 4px 10px rgba(0,120,135,.3),-3px -3px 8px rgba(0,188,212,.2);transition:all .15s;display:inline-flex;align-items:center;gap:8px;text-decoration:none;white-space:nowrap;flex-shrink:0;position:relative;overflow:hidden}
+.sp-demo:hover{transform:translateY(-2px)}
+.sp-demo:active{transform:scale(.98)}
+.sp-pulse{width:7px;height:7px;border-radius:50%;background:#fff;animation:spPulse 2s infinite}
+@keyframes spPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+@media(max-width:768px){
+  .stepper-nav{flex-wrap:wrap;gap:6px}
+  .stepper-track,.stepper-track-fill{display:none}
+  .stepper-ic{width:42px;height:42px;border-radius:12px}
+  .stepper-ic svg{width:18px;height:18px}
+  .stepper-lbl{font-size:9px}
+  .sp-g2,.sp-g3,.sp-g4,.sp-kpi-grid,.sp-ana-grid{grid-template-columns:1fr 1fr}
+  .sp-cta{flex-direction:column;gap:14px;text-align:center}
+}
 </style>
 </head>
 <body>
 
 <nav>
   <div class="nav-logo" style="cursor:default"><div class="nav-mark">M</div>MeatPro</div>
-  <div class="nav-links"><span data-to="ach">Достижения</span><span data-to="pain">Проблема</span><span data-to="sol">Решение</span><span data-to="how">Процесс</span><span data-to="pricing">Тарифы</span></div>
+  <div class="nav-links"><span data-to="ach">Достижения</span><span data-to="pain">Проблема</span><span data-to="sol">Решение</span><span data-to="screens">Экраны</span><span data-to="how">Процесс</span><span data-to="pricing">Тарифы</span></div>
   <span class="nav-cta" style="cursor:pointer" onclick="openModal('demo')">Демо</span>
 </nav>
 
@@ -334,6 +385,186 @@ footer{text-align:center;padding:40px;font-size:11px;color:var(--text3)}
     <div class="mod-card neu neu-hover rv"><div class="mod-ic-wrap"><img class="ic" src="data:image/png;base64,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"></div><div class="mod-t">Персонал</div><div class="mod-d">Сдельная/окладная оплата. KPI. Портал.</div></div>
     <div class="mod-card neu neu-hover rv"><div class="mod-ic-wrap"><img class="ic" src="data:image/png;base64,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"></div><div class="mod-t">Безопасность</div><div class="mod-d">Защита данных, IP-фильтрация, устройства.</div></div>
     <div class="mod-card neu neu-hover rv" style="border:2px solid rgba(0,151,167,0.2)"><div class="mod-new">Новый</div><div class="mod-ic-wrap"><img class="ic" src="data:image/png;base64,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"></div><div class="mod-t">Кейтеринг</div><div class="mod-d">Мероприятия, меню, закупки, персонал, прайс-лист — полный цикл.</div></div>
+  </div>
+</div></section>
+
+<!-- STEPPER -->
+<section class="stepper-sec" id="screens"><div class="container">
+  <div class="rv"><div class="stag">Интерфейс</div></div>
+  <h2 class="stit rv">Система изнутри</h2>
+  <p class="ssub rv">Кликните на модуль — увидите реальный экран</p>
+  <div class="stepper-wrap rv">
+    <div class="stepper-nav" id="sNav">
+      <div class="stepper-track"></div><div class="stepper-track-fill" id="sFill"></div>
+      <div class="stepper-dot on" onclick="goStep(0)"><div class="stepper-ic"><svg viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg></div><div class="stepper-lbl">Dashboard</div></div>
+      <div class="stepper-dot" onclick="goStep(1)"><div class="stepper-ic"><svg viewBox="0 0 24 24"><path d="M19.35 10.04A7.49 7.49 0 0012 4C9.11 4 6.6 5.64 5.35 8.04A5.994 5.994 0 000 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg></div><div class="stepper-lbl">Производство</div></div>
+      <div class="stepper-dot" onclick="goStep(2)"><div class="stepper-ic"><svg viewBox="0 0 24 24"><path d="M20 2H4c-1 0-2 .9-2 2v3.01c0 .72.43 1.34 1 1.69V20c0 1.1 1.1 2 2 2h14c.9 0 2-.9 2-2V8.7c.57-.35 1-.97 1-1.69V4c0-1.1-1-2-2-2zm-5 12H9v-2h6v2zm5-7H4V4h16v3z"/></svg></div><div class="stepper-lbl">Склад</div></div>
+      <div class="stepper-dot" onclick="goStep(3)"><div class="stepper-ic"><svg viewBox="0 0 24 24"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg></div><div class="stepper-lbl">Экспедиция</div></div>
+      <div class="stepper-dot" onclick="goStep(4)"><div class="stepper-ic"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg></div><div class="stepper-lbl">Отчёты</div></div>
+      <div class="stepper-dot" onclick="goStep(5)"><div class="stepper-ic"><svg viewBox="0 0 24 24"><path d="M21 18v1c0 1.1-.9 2-2 2H5c-1.11 0-2-.9-2-2V5c0-1.1.89-2 2-2h14c1.1 0 2 .9 2 2v1h-9c-1.11 0-2 .9-2 2v8c0 1.1.89 2 2 2h9zm-9-2h10V8H12v8zm4-2.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg></div><div class="stepper-lbl">Бухгалтерия</div></div>
+    </div>
+
+    <div id="sPanes" style="width:100%;max-width:860px">
+      <!-- 0: Dashboard -->
+      <div class="stepper-pane on" data-p="0">
+        <div class="sp-frame">
+          <div class="sp-bar"><div class="mock-dot r"></div><div class="mock-dot y"></div><div class="mock-dot g"></div><div class="sp-bar-t">Dashboard</div></div>
+          <div class="sp-body">
+            <div class="sp-g4" style="margin-bottom:14px">
+              <div class="sp-stat"><b>4.2M</b><small>Выручка</small></div>
+              <div class="sp-stat"><b>2.8M</b><small>Себестоимость</small></div>
+              <div class="sp-stat"><b style="color:var(--green)">1.4M</b><small>Прибыль</small></div>
+              <div class="sp-stat"><b style="color:var(--amber)">33%</b><small>Маржа</small></div>
+            </div>
+            <div class="sp-g2">
+              <div><div class="sp-title">Продажи за неделю</div><div class="sp-bars" id="dashB"></div></div>
+              <div><div class="sp-title">Топ филиалы</div>
+                <div class="sp-row"><div class="sp-row-n">01</div>Чиланзар<div class="sp-row-bar"><div class="sp-row-fill" style="width:92%"></div></div></div>
+                <div class="sp-row"><div class="sp-row-n">02</div>Юнусабад<div class="sp-row-bar"><div class="sp-row-fill" style="width:78%"></div></div></div>
+                <div class="sp-row"><div class="sp-row-n">03</div>Мирзо-Улугбек<div class="sp-row-bar"><div class="sp-row-fill" style="width:65%"></div></div></div>
+              </div>
+            </div>
+            <div class="sp-kpi-grid">
+              <div class="sp-kpi"><div class="sp-kpi-head"><div class="sp-kpi-lbl">Потери</div><span class="sp-kpi-trend dn">▼ 12%</span></div><div class="sp-kpi-val">8.2%</div><div class="sp-kpi-prog"><div class="sp-kpi-fill" style="width:82%;background:var(--green)"></div></div><div class="sp-kpi-tgt"><span>Цель &lt;10%</span><span style="color:var(--green)">✓</span></div></div>
+              <div class="sp-kpi"><div class="sp-kpi-head"><div class="sp-kpi-lbl">Foodcost</div><span class="sp-kpi-trend dn">▼ 3%</span></div><div class="sp-kpi-val">32%</div><div class="sp-kpi-prog"><div class="sp-kpi-fill" style="width:68%;background:var(--accent)"></div></div><div class="sp-kpi-tgt"><span>Цель &lt;35%</span><span style="color:var(--green)">✓</span></div></div>
+              <div class="sp-kpi"><div class="sp-kpi-head"><div class="sp-kpi-lbl">Выход туши</div><span class="sp-kpi-trend up">▲ 5%</span></div><div class="sp-kpi-val">84%</div><div class="sp-kpi-prog"><div class="sp-kpi-fill" style="width:84%;background:var(--green)"></div></div><div class="sp-kpi-tgt"><span>Цель &gt;80%</span><span style="color:var(--green)">✓</span></div></div>
+              <div class="sp-kpi"><div class="sp-kpi-head"><div class="sp-kpi-lbl">Доставка</div><span class="sp-kpi-trend up">▲ 8%</span></div><div class="sp-kpi-val">96%</div><div class="sp-kpi-prog"><div class="sp-kpi-fill" style="width:96%;background:var(--accent)"></div></div><div class="sp-kpi-tgt"><span>Цель &gt;90%</span><span style="color:var(--green)">✓</span></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 1: Производство -->
+      <div class="stepper-pane" data-p="1">
+        <div class="sp-frame">
+          <div class="sp-bar"><div class="mock-dot r"></div><div class="mock-dot y"></div><div class="mock-dot g"></div><div class="sp-bar-t">Производство</div></div>
+          <div class="sp-body">
+            <div class="sp-g3" style="margin-bottom:14px">
+              <div class="sp-stat"><b>24</b><small>Рецептур</small></div>
+              <div class="sp-stat"><b style="color:var(--green)">8</b><small>В работе</small></div>
+              <div class="sp-stat"><b style="color:var(--amber)">3</b><small>Ожидают</small></div>
+            </div>
+            <div class="sp-title">Активные рецептуры</div>
+            <table class="sp-tbl">
+              <tr><th>Блюдо</th><th>Категория</th><th>Брутто</th><th>Себестоимость</th><th>Статус</th></tr>
+              <tr><td>Люля-кебаб</td><td>П/ф</td><td>12.5 кг</td><td>85 000</td><td><span class="sp-tag g">Готово</span></td></tr>
+              <tr><td>Фарш говяжий</td><td>П/ф</td><td>25.0 кг</td><td>142 000</td><td><span class="sp-tag t">Производство</span></td></tr>
+              <tr><td>Манты</td><td>Блюдо</td><td>8.0 кг</td><td>96 000</td><td><span class="sp-tag a">Ожидает</span></td></tr>
+              <tr><td>Шашлык</td><td>Блюдо</td><td>15.0 кг</td><td>180 000</td><td><span class="sp-tag g">Готово</span></td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2: Склад -->
+      <div class="stepper-pane" data-p="2">
+        <div class="sp-frame">
+          <div class="sp-bar"><div class="mock-dot r"></div><div class="mock-dot y"></div><div class="mock-dot g"></div><div class="sp-bar-t">Склад</div></div>
+          <div class="sp-body">
+            <div class="sp-g3" style="margin-bottom:14px">
+              <div class="sp-stat"><b>1 240</b><small>кг на складе</small></div>
+              <div class="sp-stat"><b style="color:var(--red)">3</b><small>Нехватка</small></div>
+              <div class="sp-stat"><b style="color:var(--green)">47</b><small>Позиций</small></div>
+            </div>
+            <div class="sp-title">Остатки</div>
+            <table class="sp-tbl">
+              <tr><th>Продукт</th><th>Остаток</th><th>Мин. запас</th><th>Статус</th></tr>
+              <tr><td>Говядина (вырезка)</td><td>180 кг</td><td>50 кг</td><td><span class="sp-tag g">Норма</span></td></tr>
+              <tr><td>Баранина</td><td>45 кг</td><td>40 кг</td><td><span class="sp-tag a">Мало</span></td></tr>
+              <tr><td>Курица</td><td>12 кг</td><td>30 кг</td><td><span class="sp-tag r">Нехватка</span></td></tr>
+              <tr><td>Специи</td><td>8 кг</td><td>5 кг</td><td><span class="sp-tag g">Норма</span></td></tr>
+              <tr><td>Лук репчатый</td><td>35 кг</td><td>20 кг</td><td><span class="sp-tag g">Норма</span></td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3: Экспедиция -->
+      <div class="stepper-pane" data-p="3">
+        <div class="sp-frame">
+          <div class="sp-bar"><div class="mock-dot r"></div><div class="mock-dot y"></div><div class="mock-dot g"></div><div class="sp-bar-t">Экспедиция</div></div>
+          <div class="sp-body">
+            <div class="sp-g4" style="margin-bottom:14px">
+              <div class="sp-stat"><b>12</b><small>Заказов</small></div>
+              <div class="sp-stat"><b style="color:var(--green)">7</b><small>Доставлено</small></div>
+              <div class="sp-stat"><b style="color:var(--accent)">3</b><small>В пути</small></div>
+              <div class="sp-stat"><b style="color:var(--amber)">2</b><small>Сборка</small></div>
+            </div>
+            <div class="sp-title">Активные заказы</div>
+            <table class="sp-tbl">
+              <tr><th>Филиал</th><th>Позиций</th><th>Вес</th><th>Статус</th><th>Время</th></tr>
+              <tr><td>Чиланзар</td><td>8</td><td>45 кг</td><td><span class="sp-tag g">Доставлено</span></td><td>09:15</td></tr>
+              <tr><td>Юнусабад</td><td>12</td><td>62 кг</td><td><span class="sp-tag t">В пути</span></td><td>10:30</td></tr>
+              <tr><td>Сергели</td><td>5</td><td>28 кг</td><td><span class="sp-tag a">Сборка</span></td><td>11:00</td></tr>
+              <tr><td>Мирзо-Улугбек</td><td>10</td><td>53 кг</td><td><span class="sp-tag t">В пути</span></td><td>10:45</td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4: Отчёты + Аналитика -->
+      <div class="stepper-pane" data-p="4">
+        <div class="sp-frame">
+          <div class="sp-bar"><div class="mock-dot r"></div><div class="mock-dot y"></div><div class="mock-dot g"></div><div class="sp-bar-t">Отчёты и аналитика</div></div>
+          <div class="sp-body">
+            <div class="sp-g2">
+              <div><div class="sp-title">Маржинальность</div><div class="sp-bars" id="repB"></div><div style="display:flex;justify-content:space-between;margin-top:6px;font-size:9px;color:var(--text3)"><span>Янв</span><span>Фев</span><span>Мар</span><span>Апр</span><span>Май</span><span>Июн</span></div></div>
+              <div><div class="sp-title">Финансовая сводка</div>
+                <div class="sp-row"><div style="flex:1">Выручка</div><div style="font-family:'Space Mono';font-weight:700;color:var(--accent)">4.2M</div></div>
+                <div class="sp-row"><div style="flex:1">Сырьё</div><div style="font-family:'Space Mono';font-weight:700;color:var(--red)">2.1M</div></div>
+                <div class="sp-row"><div style="flex:1">Зарплаты</div><div style="font-family:'Space Mono';font-weight:700;color:var(--amber)">0.7M</div></div>
+                <div class="sp-row"><div style="flex:1">Чистая прибыль</div><div style="font-family:'Space Mono';font-weight:700;color:var(--green)">1.4M</div></div>
+              </div>
+            </div>
+            <div class="sp-ana-grid">
+              <div class="sp-ana">
+                <div class="sp-ana-title">Структура затрат</div>
+                <div class="sp-donut"><i>66%</i></div>
+                <div class="sp-mini"><div class="sp-mini-dot" style="background:var(--accent)"></div>Сырьё<div class="sp-mini-v">50%</div></div>
+                <div class="sp-mini"><div class="sp-mini-dot" style="background:var(--amber)"></div>Зарплаты<div class="sp-mini-v">17%</div></div>
+                <div class="sp-mini"><div class="sp-mini-dot" style="background:var(--text3)"></div>Прочее<div class="sp-mini-v">33%</div></div>
+              </div>
+              <div class="sp-ana">
+                <div class="sp-ana-title">KPI персонала</div>
+                <div class="sp-mini"><div>Выработка / смена</div><div class="sp-mini-v" style="color:var(--green)">124%</div></div>
+                <div class="sp-mini"><div>Точность разделки</div><div class="sp-mini-v" style="color:var(--accent)">91%</div></div>
+                <div class="sp-mini"><div>Скорость сборки</div><div class="sp-mini-v" style="color:var(--green)">108%</div></div>
+                <div class="sp-mini"><div>Брак / возвраты</div><div class="sp-mini-v" style="color:var(--red)">2.1%</div></div>
+                <div class="sp-mini"><div>Посещаемость</div><div class="sp-mini-v" style="color:var(--green)">97%</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5: Бухгалтерия -->
+      <div class="stepper-pane" data-p="5">
+        <div class="sp-frame">
+          <div class="sp-bar"><div class="mock-dot r"></div><div class="mock-dot y"></div><div class="mock-dot g"></div><div class="sp-bar-t">Бухгалтерия</div></div>
+          <div class="sp-body">
+            <div class="sp-g3" style="margin-bottom:14px">
+              <div class="sp-stat"><b style="color:var(--green)">+2.4M</b><small>Приход</small></div>
+              <div class="sp-stat"><b style="color:var(--red)">−1.8M</b><small>Расход</small></div>
+              <div class="sp-stat"><b>+0.6M</b><small>Баланс</small></div>
+            </div>
+            <div class="sp-title">Последние операции</div>
+            <table class="sp-tbl">
+              <tr><th>Дата</th><th>Описание</th><th>Сумма</th><th>Тип</th></tr>
+              <tr><td>28.03</td><td>Оплата от Чиланзар</td><td>+380 000</td><td><span class="sp-tag g">Приход</span></td></tr>
+              <tr><td>28.03</td><td>Закупка сырья</td><td>−520 000</td><td><span class="sp-tag r">Расход</span></td></tr>
+              <tr><td>27.03</td><td>Зарплата (сдельная)</td><td>−145 000</td><td><span class="sp-tag r">Расход</span></td></tr>
+              <tr><td>27.03</td><td>Кейтеринг #42</td><td>+890 000</td><td><span class="sp-tag g">Приход</span></td></tr>
+              <tr><td>26.03</td><td>Оплата от Юнусабад</td><td>+420 000</td><td><span class="sp-tag g">Приход</span></td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sp-cta">
+      <div><h3>Увидеть всё вживую?</h3><p>Полная версия с демо-данными. Без регистрации — просто откройте.</p></div>
+      <button class="sp-demo" onclick="openDemoModal()"><span class="sp-pulse"></span>Попробовать демо</button>
+    </div>
   </div>
 </div></section>
 
@@ -480,12 +711,10 @@ footer{text-align:center;padding:40px;font-size:11px;color:var(--text3)}
   </div>
 </div></section>
 
-<footer>© 2026 MeatPro ERP · meatpro.pages.dev · Telegram: @meatpro_support</footer>
-
 <script>
-const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('vis');obs.unobserve(el.target)}})},{threshold:0.12});
+const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('vis');obs.unobserve(el.target)}})},{threshold:0.05});
 document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
-document.querySelectorAll('.pain-grid .rv,.mod-grid .rv,.adv-grid .rv,.steps .rv,.ach-grid .rv,.charts-grid .rv').forEach((el,i)=>{el.style.transitionDelay=(i*0.1)+'s'});
+document.querySelectorAll('.pain-grid .rv,.mod-grid .rv,.adv-grid .rv,.steps .rv,.ach-grid .rv,.charts-grid .rv').forEach((el,i)=>{el.style.transitionDelay=(i*0.06)+'s'});
 
 const cO=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){
   const t=parseInt(el.target.dataset.t),s=el.target.dataset.s||'';
@@ -552,8 +781,8 @@ lazyChart('yieldChart',()=>{new Chart(document.getElementById('yieldChart'),{typ
 @media(max-width:480px){.chat{right:12px;left:12px;width:auto;bottom:88px;max-height:60vh}}
 </style>
 
-<section id="contact">
-<div class="form-section rv">
+<section id="contact" style="padding:0">
+<div class="form-section">
   <div style="text-align:center;margin-bottom:40px;">
     <div class="stag">Начать работу</div>
     <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,5vw,52px);font-weight:400;color:var(--ink);margin-bottom:12px;letter-spacing:-.02em;">Оставьте <em style="font-style:italic;color:var(--accent);">заявку</em></h2>
@@ -688,6 +917,38 @@ document.querySelectorAll('[data-to]').forEach(s => {
 });
 </script>
 
+<!-- STEPPER JS -->
+<script>
+(function(){
+  var cur=0,tot=6,timer;
+  var dots=document.querySelectorAll('.stepper-dot');
+  var panes=document.querySelectorAll('.stepper-pane');
+  var fill=document.getElementById('sFill');
+  function go(n){
+    cur=n;
+    dots.forEach(function(d,i){d.classList.remove('on','done');if(i===n)d.classList.add('on');else if(i<n)d.classList.add('done')});
+    panes.forEach(function(p){p.classList.remove('on')});
+    var p=document.querySelector('[data-p="'+n+'"]');
+    if(p){
+      void p.offsetWidth;
+      p.classList.add('on');
+    }
+    if(fill)fill.style.width=(n/(tot-1)*100)+'%';
+    bars(n);
+  }
+  window.goStep=go;
+  function bars(n){
+    if(n===0){var c=document.getElementById('dashB');if(c&&!c.dataset.ok){c.dataset.ok=1;[60,80,55,90,70,85,65].forEach(function(v,i){var b=document.createElement('div');b.className='sp-bar-col';b.style.background='rgba(0,151,167,'+(0.4+i*0.08)+')';b.style.height='0';c.appendChild(b);setTimeout(function(){b.style.height=v+'%'},80+i*70)})}}
+    if(n===4){var c=document.getElementById('repB');if(c&&!c.dataset.ok){c.dataset.ok=1;[45,55,50,68,72,80].forEach(function(v,i){var b=document.createElement('div');b.className='sp-bar-col';b.style.background=i<3?'rgba(0,151,167,0.5)':'rgba(39,174,96,0.6)';b.style.height='0';c.appendChild(b);setTimeout(function(){b.style.height=v+'%'},80+i*70)})}}
+  }
+  function start(){timer=setInterval(function(){go((cur+1)%tot)},4000)}
+  function stop(){clearInterval(timer)}
+  dots.forEach(function(d){d.addEventListener('mouseenter',stop);d.addEventListener('mouseleave',function(){stop();start()})});
+  var sec=document.getElementById('screens');
+  if(sec){var ob=new IntersectionObserver(function(e){e.forEach(function(el){if(el.isIntersecting){bars(0);start();ob.unobserve(el.target)}})},{threshold:0.15});ob.observe(sec)}
+})();
+</script>
+
 <!-- МОДАЛКА ЗАЯВКИ -->
 <div class="modal-overlay" id="leadModal" onclick="if(event.target===this)closeModal()">
   <div class="modal-box">
@@ -816,6 +1077,134 @@ async function submitModal(){
   }
 })();
 </script>
+
+<!-- DEMO MODAL -->
+<style>
+.demo-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:600;align-items:center;justify-content:center;padding:20px}
+.demo-overlay.open{display:flex}
+.demo-box{background:var(--bg);border-radius:24px;padding:36px;width:100%;max-width:440px;box-shadow:16px 16px 40px rgba(0,0,0,.25),-8px -8px 20px rgba(255,255,255,.4);position:relative}
+.demo-close{position:absolute;top:14px;right:14px;background:var(--bg);border:none;width:30px;height:30px;border-radius:10px;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;box-shadow:3px 3px 7px var(--sd),-3px -3px 7px var(--sl);color:var(--text3)}
+.demo-badge{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:10px;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--accent);margin-bottom:14px;box-shadow:inset 3px 3px 6px var(--sd),inset -3px -3px 6px var(--sl)}
+.demo-badge i{width:7px;height:7px;border-radius:50%;background:var(--accent);animation:spPulse 2s infinite}
+.demo-title{font-size:22px;font-weight:700;margin-bottom:4px}
+.demo-sub{font-size:13px;color:var(--text2);margin-bottom:20px;line-height:1.6}
+.demo-field{margin-bottom:12px}
+.demo-label{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-family:'Space Mono',monospace;margin-bottom:6px;display:block}
+.demo-input{width:100%;padding:12px 14px;border-radius:11px;border:none;outline:none;font-size:13px;font-family:inherit;background:var(--bg);color:var(--text);box-shadow:inset 3px 3px 7px var(--sd),inset -3px -3px 7px var(--sl);box-sizing:border-box}
+.demo-input:focus{box-shadow:inset 3px 3px 7px var(--sd),inset -3px -3px 7px var(--sl),0 0 0 2px rgba(0,188,212,.25)}
+.demo-input::placeholder{color:var(--text3)}
+.demo-submit{width:100%;padding:14px;border-radius:13px;border:none;font-size:14px;font-weight:700;font-family:inherit;cursor:pointer;background:var(--accent);color:#fff;box-shadow:5px 5px 12px rgba(0,120,135,.3),-3px -3px 8px rgba(0,188,212,.2);margin-top:6px;transition:transform .15s;display:flex;align-items:center;justify-content:center;gap:8px;position:relative;overflow:hidden}
+.demo-submit:hover{transform:translateY(-2px)}
+.demo-submit:disabled{opacity:.6;cursor:not-allowed;transform:none}
+.demo-note{font-size:10px;color:var(--text3);text-align:center;margin-top:10px;line-height:1.5}
+.demo-toast{display:none;margin-bottom:12px;padding:10px 14px;border-radius:10px;font-size:12px;font-weight:500;text-align:center}
+.demo-toast.warn{background:rgba(255,160,0,.08);border:1px solid rgba(255,160,0,.25);color:#e65100}
+.demo-toast.error{background:rgba(220,50,50,.08);border:1px solid rgba(220,50,50,.2);color:#c0392b}
+.demo-success{display:none;text-align:center;padding:20px 0}
+.demo-success-ic{width:64px;height:64px;border-radius:50%;background:var(--bg);box-shadow:4px 4px 8px var(--sd),-4px -4px 8px var(--sl);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:28px;color:var(--accent)}
+.demo-success-t{font-size:18px;font-weight:700;color:var(--accent);margin-bottom:6px}
+.demo-success-s{font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:16px}
+.demo-go{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:13px;font-size:14px;font-weight:700;font-family:inherit;border:none;cursor:pointer;background:var(--accent);color:#fff;box-shadow:5px 5px 12px rgba(0,120,135,.3),-3px -3px 8px rgba(0,188,212,.2);text-decoration:none;transition:transform .15s}
+.demo-go:hover{transform:translateY(-2px)}
+.demo-countdown{font-family:'Space Mono',monospace;font-size:12px;color:var(--text3);margin-top:10px}
+</style>
+
+<div class="demo-overlay" id="demoModal" onclick="if(event.target===this)closeDemoModal()">
+  <div class="demo-box">
+    <button class="demo-close" onclick="closeDemoModal()">×</button>
+    <div id="demoForm">
+      <div class="demo-toast" id="demoToast"></div>
+      <div class="demo-badge"><i></i> Бесплатный доступ</div>
+      <div class="demo-title">Демо-доступ к MeatPro</div>
+      <div class="demo-sub">Заполните данные — откроем полную версию с демо-данными. Без оплаты, без обязательств.</div>
+      <div class="demo-field">
+        <label class="demo-label">Имя *</label>
+        <input class="demo-input" id="demoName" placeholder="Ваше имя" type="text">
+      </div>
+      <div class="demo-field">
+        <label class="demo-label">Телефон *</label>
+        <input class="demo-input" id="demoPhone" placeholder="+998 90 000 00 00" type="tel">
+      </div>
+      <div class="demo-field">
+        <label class="demo-label">Telegram</label>
+        <input class="demo-input" id="demoTg" placeholder="@username">
+      </div>
+      <button class="demo-submit" id="demoBtn" onclick="submitDemo()">Получить демо-доступ →</button>
+      <div class="demo-note">Данные нужны только для связи. Спам не отправляем.</div>
+    </div>
+    <div class="demo-success" id="demoSuccess">
+      <div class="demo-success-ic">✓</div>
+      <div class="demo-success-t">Ваш демо-доступ готов!</div>
+      <div class="demo-success-s">Ваш персональный ключ на 14 дней:</div>
+      <div id="demoKeyDisplay" style="font-family:'Space Mono',monospace;font-size:22px;font-weight:700;color:var(--accent);background:var(--bg);padding:14px 24px;border-radius:14px;box-shadow:inset 3px 3px 6px var(--sd),inset -3px -3px 6px var(--sl);margin:12px 0;letter-spacing:2px;text-align:center;user-select:all">—</div>
+      <div style="font-size:11px;color:var(--text3);margin-bottom:12px">Сохраните ключ — он понадобится для повторного входа</div>
+      <a href="#" class="demo-go" id="demoGoBtn" target="_blank">Открыть MeatPro →</a>
+      <div class="demo-countdown" id="demoCd">Автоматический переход через <b>5</b> сек...</div>
+    </div>
+  </div>
+</div>
+
+<script>
+function openDemoModal(){
+  document.getElementById('demoModal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeDemoModal(){
+  document.getElementById('demoModal').classList.remove('open');
+  document.body.style.overflow='';
+}
+function showDemoToast(msg,type){
+  var t=document.getElementById('demoToast');
+  t.textContent=msg;t.className='demo-toast '+type;t.style.display='block';
+}
+async function submitDemo(){
+  var name=document.getElementById('demoName').value.trim();
+  var phone=document.getElementById('demoPhone').value.trim();
+  var tg=document.getElementById('demoTg').value.trim();
+  if(!name){showDemoToast('Укажите ваше имя','warn');document.getElementById('demoName').focus();return}
+  if(!phone){showDemoToast('Укажите номер телефона','warn');document.getElementById('demoPhone').focus();return}
+  document.getElementById('demoToast').style.display='none';
+  var btn=document.getElementById('demoBtn');
+  btn.disabled=true;btn.textContent='Генерируем ваш ключ...';
+  try{
+    var res=await fetch('https://wihicrddqikkuwjllgfm.supabase.co/rest/v1/rpc/generate_demo_license',{
+      method:'POST',
+      headers:{
+        'Content-Type':'application/json',
+        'apikey':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndpaGljcmRkcWlra3V3amxsZ2ZtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDk4MjYyNzksImV4cCI6MjAyNTQwMjI3OX0.pPzqPMdTRXaqvIXrEQRRfSMtEOBBa7iBBJ3Mn8c-4Fo',
+        'Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndpaGljcmRkcWlra3V3amxsZ2ZtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDk4MjYyNzksImV4cCI6MjAyNTQwMjI3OX0.pPzqPMdTRXaqvIXrEQRRfSMtEOBBa7iBBJ3Mn8c-4Fo'
+      },
+      body:JSON.stringify({p_name:name,p_phone:phone,p_telegram:tg||null})
+    });
+    var demoKey=await res.json();
+    if(!demoKey||typeof demoKey!=='string'||!demoKey.startsWith('DEMO-')){
+      showDemoToast('Ошибка генерации ключа. Попробуйте ещё раз.','err');
+      btn.disabled=false;btn.textContent='Получить демо-доступ →';
+      return;
+    }
+    // Показываем ключ
+    document.getElementById('demoKeyDisplay').textContent=demoKey;
+    var goUrl='https://meatpro.pages.dev?key='+encodeURIComponent(demoKey);
+    document.getElementById('demoGoBtn').href=goUrl;
+    document.getElementById('demoForm').style.display='none';
+    document.getElementById('demoSuccess').style.display='block';
+    var sec=5;
+    var cd=setInterval(function(){
+      sec--;
+      document.querySelector('#demoCd b').textContent=sec;
+      if(sec<=0){
+        clearInterval(cd);
+        window.open(goUrl,'_blank');
+      }
+    },1000);
+  }catch(e){
+    showDemoToast('Ошибка соединения. Проверьте интернет.','err');
+    btn.disabled=false;btn.textContent='Получить демо-доступ →';
+  }
+}
+</script>
+
+<footer>© 2026 MeatPro ERP · meatpro.pages.dev · Telegram: @meatpro_support</footer>
 
 </body>
 </html>
