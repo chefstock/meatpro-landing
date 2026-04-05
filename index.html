@@ -1114,32 +1114,41 @@ async function submitModal(){
     <button class="demo-close" onclick="closeDemoModal()">×</button>
     <div id="demoForm">
       <div class="demo-toast" id="demoToast"></div>
-      <div class="demo-badge"><i></i> Бесплатный доступ</div>
-      <div class="demo-title">Демо-доступ к MeatPro</div>
-      <div class="demo-sub">Заполните данные — откроем полную версию с демо-данными. Без оплаты, без обязательств.</div>
+      <div class="demo-badge"><i></i> 14 дней бесплатно</div>
+      <div class="demo-title">Регистрация в MeatPro</div>
+      <div class="demo-sub">Создайте аккаунт — получите полный доступ ко всем модулям на 14 дней. Без оплаты, без обязательств.</div>
       <div class="demo-field">
         <label class="demo-label">Имя *</label>
         <input class="demo-input" id="demoName" placeholder="Ваше имя" type="text">
       </div>
       <div class="demo-field">
-        <label class="demo-label">Телефон *</label>
-        <input class="demo-input" id="demoPhone" placeholder="+998 90 000 00 00" type="tel">
+        <label class="demo-label">Email *</label>
+        <input class="demo-input" id="demoEmail" placeholder="your@email.com" type="email">
       </div>
       <div class="demo-field">
-        <label class="demo-label">Telegram</label>
-        <input class="demo-input" id="demoTg" placeholder="@username">
+        <label class="demo-label">Пароль *</label>
+        <input class="demo-input" id="demoPassword" placeholder="Минимум 6 символов" type="password" minlength="6">
       </div>
-      <button class="demo-submit" id="demoBtn" onclick="submitDemo()">Получить демо-доступ →</button>
-      <div class="demo-note">Данные нужны только для связи. Спам не отправляем.</div>
+      <div class="demo-field">
+        <label class="demo-label">Телефон</label>
+        <input class="demo-input" id="demoPhone" placeholder="+998 90 000 00 00" type="tel">
+      </div>
+      <button class="demo-submit" id="demoBtn" onclick="submitDemo()">Создать аккаунт →</button>
+      <div class="demo-note">После регистрации на email придёт письмо подтверждения.</div>
+      <div style="text-align:center;margin-top:12px"><span style="font-size:12px;color:var(--text3)">Уже есть аккаунт? </span><a href="https://meatpro.pages.dev" style="font-size:12px;color:var(--accent);font-weight:600;text-decoration:none">Войти →</a></div>
     </div>
     <div class="demo-success" id="demoSuccess">
-      <div class="demo-success-ic">✓</div>
-      <div class="demo-success-t">Ваш демо-доступ готов!</div>
-      <div class="demo-success-s">Ваш персональный ключ на 14 дней:</div>
-      <div id="demoKeyDisplay" style="font-family:'Space Mono',monospace;font-size:22px;font-weight:700;color:var(--accent);background:var(--bg);padding:14px 24px;border-radius:14px;box-shadow:inset 3px 3px 6px var(--sd),inset -3px -3px 6px var(--sl);margin:12px 0;letter-spacing:2px;text-align:center;user-select:all">—</div>
-      <div style="font-size:11px;color:var(--text3);margin-bottom:12px">Сохраните ключ — он понадобится для повторного входа</div>
-      <a href="#" class="demo-go" id="demoGoBtn" target="_blank">Открыть MeatPro →</a>
-      <div class="demo-countdown" id="demoCd">Автоматический переход через <b>5</b> сек...</div>
+      <div class="demo-success-ic">✉</div>
+      <div class="demo-success-t">Проверьте почту!</div>
+      <div class="demo-success-s">Мы отправили письмо подтверждения на:</div>
+      <div id="demoKeyDisplay" style="font-family:'Space Mono',monospace;font-size:16px;font-weight:700;color:var(--accent);background:var(--bg);padding:14px 24px;border-radius:14px;box-shadow:inset 3px 3px 6px var(--sd),inset -3px -3px 6px var(--sl);margin:12px 0;text-align:center;user-select:all">—</div>
+      <div style="font-size:12px;color:var(--text2);margin-bottom:16px;line-height:1.7;text-align:left;padding:0 10px">
+        <b>1.</b> Откройте письмо от MeatPro<br>
+        <b>2.</b> Нажмите кнопку подтверждения<br>
+        <b>3.</b> Войдите по email и паролю
+      </div>
+      <a href="https://meatpro.pages.dev" class="demo-go" id="demoGoBtn">Войти в MeatPro →</a>
+      <div style="font-size:10px;color:var(--text3);margin-top:10px">Не получили письмо? Проверьте папку «Спам»</div>
     </div>
   </div>
 </div>
@@ -1159,47 +1168,60 @@ function showDemoToast(msg,type){
 }
 async function submitDemo(){
   var name=document.getElementById('demoName').value.trim();
+  var email=document.getElementById('demoEmail').value.trim();
+  var password=document.getElementById('demoPassword').value;
   var phone=document.getElementById('demoPhone').value.trim();
-  var tg=document.getElementById('demoTg').value.trim();
   if(!name){showDemoToast('Укажите ваше имя','warn');document.getElementById('demoName').focus();return}
-  if(!phone){showDemoToast('Укажите номер телефона','warn');document.getElementById('demoPhone').focus();return}
+  if(!email){showDemoToast('Укажите email','warn');document.getElementById('demoEmail').focus();return}
+  if(!email.includes('@')){showDemoToast('Некорректный email','warn');document.getElementById('demoEmail').focus();return}
+  if(!password||password.length<6){showDemoToast('Пароль минимум 6 символов','warn');document.getElementById('demoPassword').focus();return}
   document.getElementById('demoToast').style.display='none';
   var btn=document.getElementById('demoBtn');
-  btn.disabled=true;btn.textContent='Генерируем ваш ключ...';
+  btn.disabled=true;btn.textContent='Создаём аккаунт...';
+  var SB_URL='https://wihicrddqikkuwjllgfm.supabase.co';
+  var SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndpaGljcmRkcWlra3V3amxsZ2ZtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDk4MjYyNzksImV4cCI6MjAyNTQwMjI3OX0.pPzqPMdTRXaqvIXrEQRRfSMtEOBBa7iBBJ3Mn8c-4Fo';
   try{
-    var res=await fetch('https://wihicrddqikkuwjllgfm.supabase.co/rest/v1/rpc/generate_demo_license',{
+    // 1. Регистрация в Supabase Auth
+    var authRes=await fetch(SB_URL+'/auth/v1/signup',{
       method:'POST',
-      headers:{
-        'Content-Type':'application/json',
-        'apikey':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndpaGljcmRkcWlra3V3amxsZ2ZtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDk4MjYyNzksImV4cCI6MjAyNTQwMjI3OX0.pPzqPMdTRXaqvIXrEQRRfSMtEOBBa7iBBJ3Mn8c-4Fo',
-        'Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndpaGljcmRkcWlra3V3amxsZ2ZtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDk4MjYyNzksImV4cCI6MjAyNTQwMjI3OX0.pPzqPMdTRXaqvIXrEQRRfSMtEOBBa7iBBJ3Mn8c-4Fo'
-      },
-      body:JSON.stringify({p_name:name,p_phone:phone,p_telegram:tg||null})
+      headers:{'Content-Type':'application/json','apikey':SB_KEY},
+      body:JSON.stringify({
+        email:email.toLowerCase(),
+        password:password,
+        data:{full_name:name,phone:phone||null},
+        gotrue_meta_security:{captcha_token:null}
+      })
     });
-    var demoKey=await res.json();
-    if(!demoKey||typeof demoKey!=='string'||!demoKey.startsWith('DEMO-')){
-      showDemoToast('Ошибка генерации ключа. Попробуйте ещё раз.','err');
-      btn.disabled=false;btn.textContent='Получить демо-доступ →';
+    var authData=await authRes.json();
+    if(authData.error||authData.msg){
+      var errMsg=authData.error_description||authData.msg||authData.error||'Ошибка регистрации';
+      if(errMsg.includes('already registered'))errMsg='Этот email уже зарегистрирован. Войдите в систему.';
+      if(errMsg.includes('password'))errMsg='Пароль слишком простой. Используйте минимум 6 символов.';
+      showDemoToast(errMsg,'error');
+      btn.disabled=false;btn.textContent='Создать аккаунт →';
       return;
     }
-    // Показываем ключ
-    document.getElementById('demoKeyDisplay').textContent=demoKey;
-    var goUrl='https://meatpro.pages.dev?key='+encodeURIComponent(demoKey);
-    document.getElementById('demoGoBtn').href=goUrl;
+    var authId=authData.id||authData.user?.id;
+    if(!authId){
+      showDemoToast('Ошибка создания аккаунта','error');
+      btn.disabled=false;btn.textContent='Создать аккаунт →';
+      return;
+    }
+    // 2. Создаём демо-лицензию + запись в users через RPC
+    try{
+      await fetch(SB_URL+'/rest/v1/rpc/register_demo_user',{
+        method:'POST',
+        headers:{'Content-Type':'application/json','apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY},
+        body:JSON.stringify({p_auth_id:authId,p_name:name,p_email:email.toLowerCase(),p_phone:phone||null})
+      });
+    }catch(e){console.error('RPC error:',e)}
+    // 3. Показываем экран подтверждения email
+    document.getElementById('demoKeyDisplay').textContent=email.toLowerCase();
     document.getElementById('demoForm').style.display='none';
     document.getElementById('demoSuccess').style.display='block';
-    var sec=5;
-    var cd=setInterval(function(){
-      sec--;
-      document.querySelector('#demoCd b').textContent=sec;
-      if(sec<=0){
-        clearInterval(cd);
-        window.open(goUrl,'_blank');
-      }
-    },1000);
   }catch(e){
-    showDemoToast('Ошибка соединения. Проверьте интернет.','err');
-    btn.disabled=false;btn.textContent='Получить демо-доступ →';
+    showDemoToast('Ошибка соединения. Проверьте интернет.','error');
+    btn.disabled=false;btn.textContent='Создать аккаунт →';
   }
 }
 </script>
