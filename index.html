@@ -1184,26 +1184,36 @@ async function submitDemo(){
     // 1. Регистрация в Supabase Auth
     var authRes=await fetch(SB_URL+'/auth/v1/signup',{
       method:'POST',
-      headers:{'Content-Type':'application/json','apikey':SB_KEY},
+      headers:{'Content-Type':'application/json','apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY},
       body:JSON.stringify({
         email:email.toLowerCase(),
         password:password,
-        data:{full_name:name,phone:phone||null},
-        gotrue_meta_security:{captcha_token:null}
+        data:{full_name:name,phone:phone||null}
       })
     });
     var authData=await authRes.json();
-    if(authData.error||authData.msg){
+    console.log('Auth response:',authRes.status,authData);
+    if(!authRes.ok||authData.error||authData.msg){
       var errMsg=authData.error_description||authData.msg||authData.error||'Ошибка регистрации';
-      if(errMsg.includes('already registered'))errMsg='Этот email уже зарегистрирован. Войдите в систему.';
+      if(typeof errMsg==='object')errMsg=JSON.stringify(errMsg);
+      if(errMsg.includes('already registered')||errMsg.includes('already been registered'))errMsg='Этот email уже зарегистрирован. Войдите в систему.';
       if(errMsg.includes('password'))errMsg='Пароль слишком простой. Используйте минимум 6 символов.';
+      if(errMsg.includes('rate limit')||errMsg.includes('429'))errMsg='Слишком много попыток. Подождите минуту.';
       showDemoToast(errMsg,'error');
       btn.disabled=false;btn.textContent='Создать аккаунт →';
       return;
     }
-    var authId=authData.id||authData.user?.id;
+    // Supabase может вернуть user в разных форматах
+    var authId=authData.id||authData.user?.id||(authData.identities&&authData.identities.length===0?null:null);
+    // Если identities пустой — email уже зарегистрирован (Supabase возвращает 200 с пустым identities)
+    if(authData.identities&&authData.identities.length===0){
+      showDemoToast('Этот email уже зарегистрирован. Войдите в систему.','error');
+      btn.disabled=false;btn.textContent='Создать аккаунт →';
+      return;
+    }
     if(!authId){
-      showDemoToast('Ошибка создания аккаунта','error');
+      showDemoToast('Ошибка создания аккаунта. Попробуйте другой email.','error');
+      console.error('No auth ID in response:',authData);
       btn.disabled=false;btn.textContent='Создать аккаунт →';
       return;
     }
