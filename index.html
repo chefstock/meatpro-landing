@@ -840,7 +840,7 @@ async function submitForm(){
   try{
     var r=await fetch('https://wihicrddqikkuwjllgfm.supabase.co/rest/v1/leads',{
       method:'POST',
-      headers:{'Content-Type':'application/json','apikey':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndpaGljcmRkcWlra3V3amxsZ2ZtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDk4MjYyNzksImV4cCI6MjAyNTQwMjI3OX0.pPzqPMdTRXaqvIXrEQRRfSMtEOBBa7iBBJ3Mn8c-4Fo','Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndpaGljcmRkcWlra3V3amxsZ2ZtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDk4MjYyNzksImV4cCI6MjAyNTQwMjI3OX0.pPzqPMdTRXaqvIXrEQRRfSMtEOBBa7iBBJ3Mn8c-4Fo','Prefer':'return=minimal'},
+      headers:{'Content-Type':'application/json','apikey':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndpaGljcmRkcWlra3V3amxsZ2ZtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA4MzQ5MjgsImV4cCI6MjA4NjQxMDkyOH0.YooKb_t9ayYHrR6p-id6F7YcWQNnZz9bc1Da9PKlp68','Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndpaGljcmRkcWlra3V3amxsZ2ZtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA4MzQ5MjgsImV4cCI6MjA4NjQxMDkyOH0.YooKb_t9ayYHrR6p-id6F7YcWQNnZz9bc1Da9PKlp68','Prefer':'return=minimal'},
       body:JSON.stringify({name:name,phone:phone,company:company,telegram:telegram,plan:plan,comment:comment,source:'landing'})
     });
     if(r.ok||r.status===201){
@@ -1032,8 +1032,8 @@ async function submitModal(){
       method:'POST',
       headers:{
         'Content-Type':'application/json',
-        'apikey':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndpaGljcmRkcWlra3V3amxsZ2ZtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDk4MjYyNzksImV4cCI6MjAyNTQwMjI3OX0.pPzqPMdTRXaqvIXrEQRRfSMtEOBBa7iBBJ3Mn8c-4Fo',
-        'Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndpaGljcmRkcWlra3V3amxsZ2ZtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDk4MjYyNzksImV4cCI6MjAyNTQwMjI3OX0.pPzqPMdTRXaqvIXrEQRRfSMtEOBBa7iBBJ3Mn8c-4Fo',
+        'apikey':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndpaGljcmRkcWlra3V3amxsZ2ZtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA4MzQ5MjgsImV4cCI6MjA4NjQxMDkyOH0.YooKb_t9ayYHrR6p-id6F7YcWQNnZz9bc1Da9PKlp68',
+        'Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndpaGljcmRkcWlra3V3amxsZ2ZtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA4MzQ5MjgsImV4cCI6MjA4NjQxMDkyOH0.YooKb_t9ayYHrR6p-id6F7YcWQNnZz9bc1Da9PKlp68',
         'Prefer':'return=minimal'
       },
       body:JSON.stringify({name:name,phone:phone,company:company,telegram:telegram,plan:plan,comment:comment,source:'landing'})
@@ -1179,7 +1179,7 @@ async function submitDemo(){
   var btn=document.getElementById('demoBtn');
   btn.disabled=true;btn.textContent='Создаём аккаунт...';
   var SB_URL='https://wihicrddqikkuwjllgfm.supabase.co';
-  var SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndpaGljcmRkcWlra3V3amxsZ2ZtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDk4MjYyNzksImV4cCI6MjAyNTQwMjI3OX0.pPzqPMdTRXaqvIXrEQRRfSMtEOBBa7iBBJ3Mn8c-4Fo';
+  var SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndpaGljcmRkcWlra3V3amxsZ2ZtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA4MzQ5MjgsImV4cCI6MjA4NjQxMDkyOH0.YooKb_t9ayYHrR6p-id6F7YcWQNnZz9bc1Da9PKlp68';
   try{
     // 1. Регистрация в Supabase Auth
     var authRes=await fetch(SB_URL+'/auth/v1/signup',{
