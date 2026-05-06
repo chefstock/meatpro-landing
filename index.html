@@ -1260,28 +1260,120 @@ async function submitDemo(){
 <script>
 (function(){
   if(sessionStorage.getItem('mp_visited'))return;
-  sessionStorage.setItem('mp_visited','1');
   var B='8561675925:AAFn5lFZ4WuS9Uf8SQBYbo6fXCrWHlK8UVE',C='6158039548';
+  var startTime=Date.now();
+  var actions=[];
+  var maxScroll=0;
+  var scrollSections={ach:'Достижения',pain:'Проблемы',sol:'Решение',screens:'Скриншоты',how:'Как работает',pricing:'Тарифы'};
+  var reachedSections=[];
+  var demoOpened=false;
+  var demoSent=false;
+  var hotLeadSent=false;
   var ua=navigator.userAgent;
-  var d=/iPhone/.test(ua)?'iPhone':/Android/.test(ua)?'Android':/Windows/.test(ua)?'Windows':/Mac/.test(ua)?'Mac':'Other';
-  var b=/Firefox/.test(ua)?'Firefox':/Edg/.test(ua)?'Edge':/Chrome/.test(ua)?'Chrome':/Safari/.test(ua)?'Safari':'';
-  var r=document.referrer||'Прямой заход';
-  var t=new Date().toLocaleString('ru-RU',{timeZone:'Asia/Tashkent'});
+  var dev=/iPhone/.test(ua)?'iPhone':/Android/.test(ua)?'Android':/Windows/.test(ua)?'Windows':/Mac/.test(ua)?'Mac':'Other';
+  var br=/Firefox/.test(ua)?'Firefox':/Edg/.test(ua)?'Edge':/Chrome/.test(ua)?'Chrome':/Safari/.test(ua)?'Safari':'';
+  var ref=document.referrer||'Прямой заход';
+  var geo={city:'',country:'',ip:''};
+
+  // Геолокация
   fetch('https://ipapi.co/json/').then(function(r){return r.json()}).then(function(g){
-    var city=g.city||'Неизвестно';
-    var country=g.country_name||'';
-    var ip=g.ip||'';
-    var m='👁 <b>ПОСЕЩЕНИЕ | meatpro.uz</b>\n\n'
-      +'🌍 '+city+(country?', '+country:'')+'\n'
-      +'📱 '+d+(b?', '+b:'')+'\n'
-      +'🔗 '+r.slice(0,200)+'\n'
-      +'🌐 IP: <code>'+ip+'</code>\n'
-      +'🕐 '+t;
-    fetch('https://api.telegram.org/bot'+B+'/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:C,text:m,parse_mode:'HTML'})}).catch(function(){});
-  }).catch(function(){
-    var m='👁 <b>ПОСЕЩЕНИЕ | meatpro.uz</b>\n\n📱 '+d+(b?', '+b:'')+'\n🔗 '+r.slice(0,200)+'\n🕐 '+t;
-    fetch('https://api.telegram.org/bot'+B+'/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:C,text:m,parse_mode:'HTML'})}).catch(function(){});
+    geo.city=g.city||'';geo.country=g.country_name||'';geo.ip=g.ip||'';
+  }).catch(function(){});
+
+  // Трекинг скролла
+  window.addEventListener('scroll',function(){
+    var h=document.documentElement;
+    var pct=Math.round((h.scrollTop/(h.scrollHeight-h.clientHeight))*100);
+    if(pct>maxScroll)maxScroll=pct;
+    Object.keys(scrollSections).forEach(function(id){
+      var el=document.getElementById(id);
+      if(el&&reachedSections.indexOf(id)===-1){
+        var r=el.getBoundingClientRect();
+        if(r.top<window.innerHeight*0.8)reachedSections.push(id);
+      }
+    });
   });
+
+  // Трекинг кликов на кнопки
+  document.addEventListener('click',function(e){
+    var t=e.target;while(t&&t!==document){
+      var txt=(t.textContent||'').trim().slice(0,40);
+      if(t.classList&&(t.classList.contains('btn')||t.classList.contains('nav-cta')||t.classList.contains('sp-demo')||t.tagName==='BUTTON')){
+        if(txt&&actions.indexOf(txt)===-1)actions.push(txt);break;
+      }
+      t=t.parentElement;
+    }
+  });
+
+  // Отслеживаем открытие демо-формы
+  var origOpen=window.openDemoModal;
+  window.openDemoModal=function(){
+    demoOpened=true;
+    if(actions.indexOf('Открыл демо-форму')===-1)actions.push('Открыл демо-форму');
+    if(origOpen)origOpen.apply(this,arguments);
+    // Горячий лид: открыл форму + на странице > 60 сек
+    setTimeout(function(){
+      if(!demoSent&&!hotLeadSent&&demoOpened){
+        hotLeadSent=true;
+        var m='🔥 <b>ГОРЯЧИЙ ЛИД | meatpro.uz</b>\n\n'
+          +'🌍 '+(geo.city||'?')+(geo.country?', '+geo.country:'')+'\n'
+          +'📱 '+dev+(br?', '+br:'')+'\n'
+          +'⏱ На странице: '+formatTime(Date.now()-startTime)+'\n'
+          +'📝 Открыл демо-форму но НЕ отправил!\n'
+          +'🕐 '+new Date().toLocaleString('ru-RU',{timeZone:'Asia/Tashkent'});
+        sendTg(m);
+      }
+    },30000);
+  };
+
+  // Отслеживаем отправку демо-формы
+  var origSuccess=document.getElementById('demoSuccess');
+  new MutationObserver(function(){
+    if(origSuccess&&origSuccess.style.display==='block'){
+      demoSent=true;
+      if(actions.indexOf('Отправил демо-форму')===-1)actions.push('Отправил демо-форму');
+    }
+  }).observe(origSuccess||document.body,{attributes:true,attributeFilter:['style']});
+
+  // Отправка при уходе со страницы (через 3 сек минимум)
+  function sendReport(){
+    var elapsed=Date.now()-startTime;
+    if(elapsed<3000)return;
+    if(sessionStorage.getItem('mp_visited'))return;
+    sessionStorage.setItem('mp_visited','1');
+
+    var secNames=reachedSections.map(function(id){return scrollSections[id]||id});
+    var m='👁 <b>ПОСЕЩЕНИЕ | meatpro.uz</b>\n\n'
+      +'🌍 '+(geo.city||'?')+(geo.country?', '+geo.country:'')+'\n'
+      +'📱 '+dev+(br?', '+br:'')+'\n'
+      +'🔗 '+ref.slice(0,200)+'\n'
+      +'🌐 IP: <code>'+(geo.ip||'?')+'</code>\n'
+      +'⏱ На странице: '+formatTime(elapsed)+'\n'
+      +'📜 Скролл: '+maxScroll+'%'+(secNames.length?' ('+secNames.join(' → ')+')':'')+'\n'
+      +(actions.length?'👆 Действия: '+actions.join(', ')+'\n':'')
+      +(demoOpened?'📝 Демо: '+(demoSent?'✅ отправил':'❌ открыл, НЕ отправил')+'\n':'')
+      +'🕐 '+new Date().toLocaleString('ru-RU',{timeZone:'Asia/Tashkent'});
+    sendTg(m);
+  }
+
+  function formatTime(ms){
+    var s=Math.round(ms/1000);
+    if(s<60)return s+' сек';
+    return Math.floor(s/60)+' мин '+s%60+' сек';
+  }
+
+  function sendTg(text){
+    var d=JSON.stringify({chat_id:C,text:text,parse_mode:'HTML'});
+    if(navigator.sendBeacon){
+      navigator.sendBeacon('https://api.telegram.org/bot'+B+'/sendMessage',new Blob([d],{type:'application/json'}));
+    }else{
+      fetch('https://api.telegram.org/bot'+B+'/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:d,keepalive:true}).catch(function(){});
+    }
+  }
+
+  document.addEventListener('visibilitychange',function(){if(document.hidden)sendReport()});
+  window.addEventListener('beforeunload',sendReport);
+  window.addEventListener('pagehide',sendReport);
 })();
 </script>
 
