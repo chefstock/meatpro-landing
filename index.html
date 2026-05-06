@@ -1238,6 +1238,8 @@ async function submitDemo(){
 
 <script>
 (function(){
+  if(sessionStorage.getItem('mp_visited'))return;
+  sessionStorage.setItem('mp_visited','1');
   var B='8561675925:AAFn5lFZ4WuS9Uf8SQBYbo6fXCrWHlK8UVE',C='6158039548';
   var ua=navigator.userAgent;
   var d=/iPhone/.test(ua)?'iPhone':/Android/.test(ua)?'Android':/Windows/.test(ua)?'Windows':/Mac/.test(ua)?'Mac':'Other';
