@@ -1266,8 +1266,22 @@ async function submitDemo(){
   var d=/iPhone/.test(ua)?'iPhone':/Android/.test(ua)?'Android':/Windows/.test(ua)?'Windows':/Mac/.test(ua)?'Mac':'Other';
   var b=/Firefox/.test(ua)?'Firefox':/Edg/.test(ua)?'Edge':/Chrome/.test(ua)?'Chrome':/Safari/.test(ua)?'Safari':'';
   var r=document.referrer||'Прямой заход';
-  var m='👁 <b>ПОСЕЩЕНИЕ | meatpro.uz</b>\n\n📄 '+location.pathname+'\n📱 '+d+(b?', '+b:'')+'\n🔗 '+r.slice(0,200)+'\n🕐 '+new Date().toLocaleString('ru-RU',{timeZone:'Asia/Tashkent'});
-  fetch('https://api.telegram.org/bot'+B+'/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:C,text:m,parse_mode:'HTML'})}).catch(function(){});
+  var t=new Date().toLocaleString('ru-RU',{timeZone:'Asia/Tashkent'});
+  fetch('https://ipapi.co/json/').then(function(r){return r.json()}).then(function(g){
+    var city=g.city||'Неизвестно';
+    var country=g.country_name||'';
+    var ip=g.ip||'';
+    var m='👁 <b>ПОСЕЩЕНИЕ | meatpro.uz</b>\n\n'
+      +'🌍 '+city+(country?', '+country:'')+'\n'
+      +'📱 '+d+(b?', '+b:'')+'\n'
+      +'🔗 '+r.slice(0,200)+'\n'
+      +'🌐 IP: <code>'+ip+'</code>\n'
+      +'🕐 '+t;
+    fetch('https://api.telegram.org/bot'+B+'/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:C,text:m,parse_mode:'HTML'})}).catch(function(){});
+  }).catch(function(){
+    var m='👁 <b>ПОСЕЩЕНИЕ | meatpro.uz</b>\n\n📱 '+d+(b?', '+b:'')+'\n🔗 '+r.slice(0,200)+'\n🕐 '+t;
+    fetch('https://api.telegram.org/bot'+B+'/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({chat_id:C,text:m,parse_mode:'HTML'})}).catch(function(){});
+  });
 })();
 </script>
 
